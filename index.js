@@ -50,12 +50,14 @@ client.on('ready', async () => {
   Object.values(guildNotificationChannels).forEach(async (notificationChannelID) => {
     const notificationChannel = await client.channels.cache.get(notificationChannelID);
     if (notificationChannel) {
+      /*
       if (process.argv.indexOf('--no-back-online-message') <= -1) {
         await notificationChannel.send(BACK_ONLINE_MESSAGE);
       }
       if (process.argv.indexOf('--new-release') > -1 && sentNewVersionFeaturesMessage === false) {
         await notificationChannel.send(NEW_VERSION_FEATURES.join('\n'));
       }
+      */
     }
   });
 
@@ -135,7 +137,7 @@ client.on('message', async (msg) => {
   const msgGuildID = msg.guild.id;
   const msgChannelID = msg.channel.id;
   const msgContent = msg.content;
-  if (msg.member.user == null) {
+  if (msg.member == null || msg.member.user == null) {
     return;
   }
   const msgSenderMemberID = msg.member.user.id;
