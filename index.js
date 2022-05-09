@@ -135,6 +135,9 @@ client.on('message', async (msg) => {
   const msgGuildID = msg.guild.id;
   const msgChannelID = msg.channel.id;
   const msgContent = msg.content;
+  if (msg.member.user == null) {
+    return;
+  }
   const msgSenderMemberID = msg.member.user.id;
 
   let notifiedMemberIDs = getNotifiedMemberIDs(msgGuildID);
