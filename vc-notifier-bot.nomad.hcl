@@ -8,7 +8,7 @@ job "vc-notifier-bot" {
 
         volume "data_volume" {
             type = "host"
-            source = "data_volume"
+            source = "nomad_data_host_volume"
         }
 
         task "default" {
@@ -16,18 +16,6 @@ job "vc-notifier-bot" {
 
             config {
                 image = "ghcr.io/jwoglom/vc-notifier-bot/vc-notifier-bot:latest"
-                command = "/bin/bash"
-                args = ["-c", <<EOF
-                    pwd;
-                    cd /usr/src/app;
-                    node index.js
-                EOF
-                ]
-            }
-
-            volume_mount {
-                volume = "data_volume"
-                destination = "/data"
             }
 
             volume_mount {
