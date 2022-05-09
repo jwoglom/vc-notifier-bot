@@ -273,7 +273,8 @@ const notifyMembers = async (message, guildID, options = {}) => {
         mentions += ', ';
       }
     });
-    let fullMessage = '**' + msg + '** ' + mentions;
+    let bold = ''; //'**';
+    let fullMessage = bold + msg + bold +' ' + mentions;
     notifChannel.send(fullMessage);
   };
 
