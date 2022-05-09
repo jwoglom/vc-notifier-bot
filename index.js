@@ -221,7 +221,7 @@ process.on('SIGTERM', () => {
   );
 
   Object.values(guildNotificationChannels).forEach((notificationChannel) => {
-    client.channels.cache.get(notificationChannel).send(TEMPORARILY_GOING_OFFLINE_MESSAGE);
+    // client.channels.cache.get(notificationChannel).send(TEMPORARILY_GOING_OFFLINE_MESSAGE);
   });
 
   sigtermReceived = true;
